@@ -28,4 +28,20 @@ export class StudentService {
     const data = this.studentRepository.create(newData);
     await this.studentRepository.save(data);
   }
+
+  async getStudent(name: string) {
+    const data = await this.studentRepository.findOne({
+      where: { name: name },
+    });
+    return data;
+  }
+
+  async patchStudent(name: string, studentId: string) {
+    const data = await this.studentRepository.findOne({
+      where: { name: name },
+    });
+    data.studentId = studentId;
+    await this.studentRepository.save(data);
+    return '수정 완료';
+  }
 }
