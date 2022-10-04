@@ -29,4 +29,9 @@ export class StudentController {
     const { name, studentId } = body;
     return await this.studentService.patchStudent(name, studentId);
   }
+
+	@Get('/hello')
+	printHello() {
+		return 'hello';
+	}
 }
